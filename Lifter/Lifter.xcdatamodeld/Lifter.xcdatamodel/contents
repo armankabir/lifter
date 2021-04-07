@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Excersise" representedClassName="Excersise" syncable="YES">
+        <attribute name="nameOfExcersise" optional="YES" attributeType="String"/>
+        <attribute name="numberOfSets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routine" inverseName="excersises" inverseEntity="Routine"/>
+        <relationship name="sets" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Set" inverseName="excerise" inverseEntity="Set"/>
+    </entity>
+    <entity name="Routine" representedClassName="Routine" syncable="YES">
+        <attribute name="nameOfRoutine" optional="YES" attributeType="String"/>
+        <relationship name="excersises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Excersise" inverseName="routine" inverseEntity="Excersise"/>
+        <relationship name="userRoutines" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserRoutines" inverseName="routines" inverseEntity="UserRoutines"/>
+    </entity>
+    <entity name="Set" representedClassName="Set" syncable="YES">
+        <attribute name="reps" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="excerise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Excersise" inverseName="sets" inverseEntity="Excersise"/>
+    </entity>
+    <entity name="UserRoutines" representedClassName="UserRoutines" syncable="YES" codeGenerationType="class">
+        <relationship name="routines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Routine" inverseName="userRoutines" inverseEntity="Routine"/>
+    </entity>
+    <elements>
+        <element name="Set" positionX="-260.41015625" positionY="27.41796875" width="128" height="88"/>
+        <element name="Excersise" positionX="-36" positionY="27" width="128" height="103"/>
+        <element name="Routine" positionX="227.15234375" positionY="8.10546875" width="128" height="88"/>
+        <element name="UserRoutines" positionX="191.72265625" positionY="194.5546875" width="128" height="58"/>
+    </elements>
 </model>
